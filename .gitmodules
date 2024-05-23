@@ -1,0 +1,3 @@
+[submodule "nc-front-end"]
+	path = nc-front-end
+	url = git@github.com:Gab2021123/nc-front-end.git
