@@ -8,6 +8,7 @@ import {
 import "./index.css";
 import Main from "./features/Main/pages/Main.tsx";
 import Login from "./features/Login/pages/Login.tsx";
+import Register from "./features/Register/pages/Register.tsx";
 const RoutesObject: RouteObject[] = [
   {
     path: "/",
@@ -21,6 +22,8 @@ const RoutesObject: RouteObject[] = [
     path: "/help",
     element: "",
   },
+  { path: "/register", element: <Register /> },
+  { path: "/carBuy", element: "" },
 ];
 const router = createBrowserRouter(RoutesObject);
 ReactDOM.createRoot(document.getElementById("root")!).render(
