@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURLNoCountry = process.env.NEXT_PUBLIC_BASE_URL_ALTICSA;
+const baseURLNoCountry = process.env.API_ENDPOINT_URL;
 
 if (!baseURLNoCountry) {
   throw new Error("Not found URL");
