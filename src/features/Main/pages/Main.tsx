@@ -8,7 +8,7 @@ import Footer from "../components/Footer/Footer";
 function Main() {
   return (
     <React.Fragment>
-      <div className="max-w-full relative grid grid-cols-12  gap-[50px]">
+      <div className="max-w-full min-h-screen relative grid grid-cols-12  gap-[50px]">
         <Polygn />
         <Navigation />
         <Panel />

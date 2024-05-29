@@ -6,6 +6,7 @@ function ImagesSvg() {
       <div className="z-10 col-start-4 col-end-10 flex flex-row justify-between items-center ">
         {svg.map((e) => (
           <Link
+            key={e.id}
             className="flex justify-center items-center w-[150px] h-[150px] bg-orange-300 rounded-[50%] shadow-2xl"
             to={e.to}
           >

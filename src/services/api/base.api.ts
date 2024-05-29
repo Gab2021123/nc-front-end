@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURLNoCountry = process.env.API_ENDPOINT_URL;
+const baseURLNoCountry = import.meta.env.VITE_API_ENDPOINT_URL;
 
 if (!baseURLNoCountry) {
   throw new Error("Not found URL");
@@ -8,5 +8,5 @@ if (!baseURLNoCountry) {
 
 export const baseUrl = axios.create({
   baseURL: baseURLNoCountry,
-  timeout: 10000,
+  timeout: 5000,
 });

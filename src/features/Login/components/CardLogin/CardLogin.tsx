@@ -3,13 +3,14 @@ import InputField from "../InputField/InputField";
 import LabelField from "../LabelField/LabelField";
 import { MdEmail, MdAlternateEmail } from "react-icons/md";
 import InputSubmit from "../../../../components/InputSubmit/InputSubmit";
-
+import { postUser } from "../../../../services/api";
+import { User } from "../../../../interfaces/IUser";
 function CardLogin(): ReactElement<HTMLDivElement> {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<User | undefined>();
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
-    console.log(event.target);
     console.log(data);
+    postUser(data);
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>): void {
@@ -23,7 +24,7 @@ function CardLogin(): ReactElement<HTMLDivElement> {
       <div className="sm:w-[390px] sm:h-[390px] flex justify-center items-center p-2 flex-col  max-w-[385px]">
         <form
           className="flex justify-center items-center p-2 flex-col gap-[35px]"
-          action=""
+          action="login"
           onSubmit={handleSubmit}
         >
           <h1 className="font-bold opacity-75 text-[29px]">Bienvenidos</h1>
