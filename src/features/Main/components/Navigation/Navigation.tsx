@@ -1,16 +1,21 @@
-import React, { ReactElement /* , useState */ } from "react";
+import React, { ReactElement } from "react";
 
 import { PiMotorcycle } from "react-icons/pi";
 import { BiHelpCircle } from "react-icons/bi";
 import { MdOutlineWork } from "react-icons/md";
 import LisItemNavigation from "../ListItemNavigation/LisItemNavigation";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
+import Logo from "../../../../components/Logo/Logo";
+
 /* import { MdOutlineMenu } from "react-icons/md"; */
+
 function Navigation(): ReactElement<HTMLElement> {
-  /* const [icon, setIcon] = useState(false); */
   return (
     <React.Fragment>
-      <nav className="bg-orange-50 z-10 justify-center items-center col-span-12 flex-col p-[10px] flex gap-[82px] sm:flex sm:gap-[82px] sm:flex-row list-none ">
+      <nav className="bg-orange-50 z-10 justify-between items-center col-span-12 flex-col p-[10px] flex gap-[82px] sm:flex sm:gap-[82px] sm:flex-row list-none ">
+        <LisItemNavigation icon={<FaUser />} left={false} rigth={false} to="/">
+          <Logo />
+        </LisItemNavigation>
         <LisItemNavigation
           to="/login"
           icon={
