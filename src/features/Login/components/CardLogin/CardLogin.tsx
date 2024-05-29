@@ -20,8 +20,12 @@ function CardLogin(): ReactElement<HTMLDivElement> {
 
   return (
     <React.Fragment>
-      <div className="sm:w-[390px] sm:h-[390px] flex justify-center items-center p-2 flex-col gap-[25px] max-w-[385px]">
-        <form action="" onSubmit={handleSubmit}>
+      <div className="sm:w-[390px] sm:h-[390px] flex justify-center items-center p-2 flex-col  max-w-[385px]">
+        <form
+          className="flex justify-center items-center p-2 flex-col gap-[35px]"
+          action=""
+          onSubmit={handleSubmit}
+        >
           <h1 className="font-bold opacity-75 text-[29px]">Bienvenidos</h1>
           <p>Descubre los mejores platos de comida</p>
           <div className="relative flex flex-row gap-x-[45px] items-center w-full">
