@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation/Navigation";
 import Polygn from "../components/Polygn/Polygn";
 import Panel from "../components/Panel/Panel";
 import ImagesSvg from "../components/ImagesSvg/ImagesSvg";
+import Footer from "../components/Footer/Footer";
 
 function Main() {
   return (
@@ -12,6 +13,7 @@ function Main() {
         <Navigation />
         <Panel />
         <ImagesSvg />
+        <Footer></Footer>
       </div>
     </React.Fragment>
   );
