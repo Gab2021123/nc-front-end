@@ -1,15 +1,19 @@
 import React from "react";
-
 import CardRegister from "../../Login/components/CardRegister/CardRegister";
-
+import "./Register.css";
 function Register() {
   return (
     <React.Fragment>
       <div className=" grid grid-cols-12">
         <section className="col-span-8  bg-orange-200 w-full h-screen">
-          <div className="absolute top-0 left-0 ">
-            <div className="w-[50px] h-[50px] bg-orange-400 animate-rotatePlus  fixed rounded-full left-[250px] right-[-150px]"></div>
-            <div className="w-[50px] h-[50px] bg-orange-400 animate-rotateMinus   fixed rounded-full left-[250px] right-[150px] "></div>{" "}
+          <div className="w-full h-full relative">
+            <img
+              src="/pizza-perfecta2.jpeg"
+              className="w-full h-full object-cover blur-[2.6px]"
+              alt=""
+            />
+
+            <div className="absolute inset-0 w-full h-full bg-black bg-opacity-50"></div>
           </div>
         </section>
 
