@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div className="bg-orange-500 fixed inset-x-0 bottom-0">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex space-x-2">
+          <Link to="/home">link</Link>
           <a href="" className="text-white">
             Quienes somos?
           </a>
@@ -18,9 +21,7 @@ const Footer = () => {
           <a href="" className="text-white">
             Registra tu negocio
           </a>
-          <a href="" className="text-white">
-            Se Parte de FlashFood
-          </a>
+          <p>Se parte de flashfood</p>
         </div>
         <hr className="my-3 border-t border-white w-4/5 mx-auto" />
         <div className="text-center">
