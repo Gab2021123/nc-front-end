@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import Main from "./features/Main/pages/Main.tsx";
+import Footer from "./features/Main/components/Footer/Footer.tsx";
 import Login from "./features/Login/pages/Login.tsx";
 import Register from "./features/Register/pages/Register.tsx";
 const RoutesObject: RouteObject[] = [
@@ -29,5 +30,6 @@ const router = createBrowserRouter(RoutesObject);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
     <RouterProvider router={router} />
+    <Footer></Footer>
   </>
 );
