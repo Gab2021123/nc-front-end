@@ -64,8 +64,7 @@ function Navigation(): ReactElement<HTMLElement> {
           className=" h-[46px] w-[46px]  gap-2 bg-orange-200 flex items-center justify-center rounded-full hover:bg-orange-400 transition-all cursor-pointer"
         ></LisItemNavigation>
         <LisItemNavigation
-          className=" h-[46px] w-[46px]  gap-2 bg-orange-200 flex items-center justify-center rounded-full hover:bg-orange-400 transition-all cursor-pointer"
-          to="/carBuy"
+          to="/shoppingcart"
           icon={
             <FaShoppingCart
               width={23}
@@ -74,7 +73,12 @@ function Navigation(): ReactElement<HTMLElement> {
             />
           }
           left={true}
-        ></LisItemNavigation>
+          rigth={false}
+          className=" h-[46px] p-2 gap-2 bg-orange-200 flex flex-row justify-center items-center rounded-full  hover:bg-orange-400 transition-all"
+          avaible={true}
+        >
+          Carrito
+        </LisItemNavigation>
       </nav>
     </React.Fragment>
   );
