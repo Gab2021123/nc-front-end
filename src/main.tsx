@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import Main from "./features/Main/pages/Main.tsx";
-
+import ShoppingCart from "./features/ShoppingCart/Pages/ShoppingCart.tsx";
 import Login from "./features/Login/pages/Login.tsx";
 import Register from "./features/Register/pages/Register.tsx";
 const RoutesObject: RouteObject[] = [
@@ -22,6 +22,10 @@ const RoutesObject: RouteObject[] = [
   {
     path: "/help",
     element: "",
+  },
+  {
+    path: "/shoppingcart",
+    element: <ShoppingCart />,
   },
   { path: "/register", element: <Register /> },
   { path: "/carBuy", element: "" },
