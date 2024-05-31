@@ -5,12 +5,20 @@ import { MdEmail, MdAlternateEmail } from "react-icons/md";
 import InputSubmit from "../../../../components/InputSubmit/InputSubmit";
 import { postUser } from "../../../../services/api";
 import { User } from "../../../../interfaces/IUser";
+import { useAuthStore } from "../../../../store/appStore";
+import { jwtDecode } from "jwt-decode";
 function CardLogin(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<User | undefined>();
-  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
+  const setToken = useAuthStore((state) => state.setToken);
+  const setPerfil = useAuthStore((state) => state.setPerfil);
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(data);
-    postUser(data);
+
+    const token = await postUser(data);
+    console.log(jwtDecode(String(token.access_token)));
+    console.log(token.access_token);
+    setToken(token.access_token);
+    setPerfil(jwtDecode(token, { header: true }));
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>): void {

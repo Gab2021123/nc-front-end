@@ -4,13 +4,29 @@ import LabelField from "../LabelField/LabelField";
 import { MdEmail, MdAlternateEmail } from "react-icons/md";
 import InputSubmit from "../../../../components/InputSubmit/InputSubmit";
 import { CiUser } from "react-icons/ci";
-import { postUser } from "../../../../services/api/register.api";
+import { postUserRegister } from "../../../../services/api/register.api";
 import { UserRegister } from "../../../../interfaces/IUserRegister";
+import { redirect, useLocation } from "react-router-dom";
 function CardRegister(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<UserRegister>();
-  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
-    event.preventDefault();
-    postUser(data);
+  let location = useLocation();
+
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ): Promise<void> {
+    try {
+      event.preventDefault();
+      const resRegister = await postUserRegister(data);
+      /*  const navigate = useNavigate();
+      if (resRegister) {
+        navigate("/login");
+      } */
+      console.log(location.state);
+      redirect("/login");
+      console.log(resRegister.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
   function handleChange(event: ChangeEvent<HTMLInputElement>): void {
     const name = event.target.name;
