@@ -6,7 +6,9 @@ import { User } from "../../interfaces/IUser";
 export const postUser = async (user: User | undefined): Promise<any> => {
   try {
     const res = await baseUrl.post(loginEndpoint, user);
-    return res;
+
+    console.log(res.data);
+    return res.data;
   } catch (error) {
     if (error instanceof AxiosError) {
       console.log(error.message);

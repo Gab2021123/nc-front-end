@@ -1,9 +1,32 @@
 import create from "zustand";
+import { persist } from "zustand/middleware";
 
-interface AppState {
-  count: number;
-}
+type AppState = {
+  accessToken: string;
+  perfil: any;
+};
 
-export const useAppStore = create<AppState>(() => ({
-  count: 10,
-}));
+type Actions = {
+  setToken: (accessToken: string) => void;
+  setPerfil: (perfil: any) => void;
+};
+
+export const useAuthStore = create(
+  persist<AppState & Actions>(
+    (set) => ({
+      accessToken: "",
+      perfil: null,
+      setToken: (accessToken: string) =>
+        set((state) => ({
+          accessToken,
+        })),
+      setPerfil: (perfil: any) =>
+        set((state) => ({
+          perfil,
+        })),
+    }),
+    {
+      name: "auth",
+    }
+  )
+);

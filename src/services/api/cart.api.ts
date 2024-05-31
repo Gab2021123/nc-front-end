@@ -1,4 +1,4 @@
-import { AxiosError /* , AxiosResponse  */ } from "axios";
+/* import { AxiosError, AxiosResponse } from "axios"; */
 import { baseUrl } from "./base.api";
 
 // export const addItemCart = async () => {
@@ -25,7 +25,7 @@ export const getCart = async (clientId: number): Promise<any> => {
 
 export const deleteCart = async (itemCarId: number) => {
   try {
-    const res = await baseUrl.delete(`/cart/${itemCarId}`);
+    await baseUrl.delete(`/cart/${itemCarId}`);
     return "success";
   } catch (error) {}
 };
