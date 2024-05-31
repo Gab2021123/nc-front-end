@@ -29,3 +29,12 @@ export const deleteCart = async (itemCarId: number) => {
     return "success";
   } catch (error) {}
 };
+
+export const addCart = async (clientId: number, productId: number) => {
+  try {
+    const res = await baseUrl.post(`/cart/${clientId}/add/${productId}/1`);
+    if (res) {
+      return { success: true };
+    }
+  } catch (error) {}
+};

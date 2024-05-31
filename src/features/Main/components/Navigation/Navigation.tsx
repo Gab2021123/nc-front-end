@@ -27,7 +27,7 @@ function Navigation(): ReactElement<HTMLElement> {
           Iniciar Sesión
         </LisItemNavigation>
         <LisItemNavigation
-          to="/trabajador"
+          to="/productslist"
           icon={
             <MdOutlineWork className="w-[23px] h-[23px] flex justify-center items-center cursor-pointer" />
           }
@@ -36,7 +36,7 @@ function Navigation(): ReactElement<HTMLElement> {
           className=" h-[46px] p-2 gap-2 bg-orange-200 flex flex-row justify-center items-center rounded-full  hover:bg-orange-400 transition-all"
           avaible={true}
         >
-          Trabaja como repartidor
+          Lista de comidas
         </LisItemNavigation>
         <LisItemNavigation
           to="/help"

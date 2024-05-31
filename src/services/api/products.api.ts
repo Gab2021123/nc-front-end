@@ -6,3 +6,10 @@ export const getProduct = async (productId: number) => {
     return res.data;
   } catch (error) {}
 };
+
+export const getProducts = async () => {
+  try {
+    const res = await baseUrl.get(`/products`);
+    return res.data;
+  } catch (error) {}
+};
