@@ -11,7 +11,7 @@ export const images: ImageComponent[] = [
   },
   {
     label: "Pizzerias",
-    source: "/public/Pizza.jpg",
+    source: "/Pizza.jpg",
     title: "Pizzerias",
     to: "/",
     contrast: 0,
@@ -19,7 +19,7 @@ export const images: ImageComponent[] = [
   },
   {
     label: "Pollo frito",
-    source: "/public/PolloFrito.jpg",
+    source: "/PolloFrito.jpg",
     title: "Pollo frito",
     to: "/",
     contrast: 0,
@@ -27,7 +27,7 @@ export const images: ImageComponent[] = [
   },
   {
     label: "Parrillas",
-    source: "/public/Parrilla.jpg",
+    source: "/Parrilla.jpg",
     title: "Parrillas",
     to: "/",
     contrast: 0,
