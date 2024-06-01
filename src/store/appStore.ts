@@ -17,11 +17,11 @@ export const useAuthStore = create(
       accessToken: "",
       perfil: null,
       setToken: (accessToken: string) =>
-        set((state) => ({
+        set((_state) => ({
           accessToken,
         })),
       setPerfil: (perfil: any) =>
-        set((state) => ({
+        set((_state) => ({
           perfil,
         })),
     }),

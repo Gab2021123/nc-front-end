@@ -7,6 +7,7 @@ import { postUser } from "../../../../services/api";
 import { User } from "../../../../interfaces/IUser";
 import { useAuthStore } from "../../../../store/appStore";
 import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
 function CardLogin(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<User | undefined>();
   const setToken = useAuthStore((state) => state.setToken);
@@ -29,7 +30,7 @@ function CardLogin(): ReactElement<HTMLDivElement> {
 
   return (
     <React.Fragment>
-      <div className="sm:w-[390px] sm:h-[390px] flex justify-center items-center p-2 flex-col  max-w-[385px]">
+      <div className="sm:w-[390px] sm:h-[390px] w-full h-full flex justify-center items-center p-2 flex-col  max-w-[385px]">
         <form
           className="flex justify-center items-center p-2 flex-col gap-[35px]"
           action="login"
@@ -59,13 +60,26 @@ function CardLogin(): ReactElement<HTMLDivElement> {
             />
             <LabelField htmlFor="password">Contraseña</LabelField>
           </div>
-          <InputSubmit
-            className="p-2 bg-orange-500 text-neutral-100 rounded-xl "
-            type="submit"
-          />
-          <a className="text-[12px] cursor-pointer text-neutral-500">
+          <div className="flex flex-row gap-[30px]">
+            <InputSubmit
+              className="p-2 bg-orange-500 text-neutral-100 rounded-xl cursor-pointer transition-all hover:bg-orange-700"
+              type="submit"
+              value="Iniciar Sesion"
+            />
+            <Link
+              className="p-2 bg-orange-500 flex justify-center items-center text-neutral-100 transition-all hover:bg-orange-700 rounded-xl"
+              to="/register"
+            >
+              Registrar
+            </Link>
+          </div>
+
+          <Link
+            to="/forgotPassword"
+            className="text-[12px] cursor-pointer text-neutral-500"
+          >
             ¿Olvido su contraseña?
-          </a>
+          </Link>
         </form>
       </div>
     </React.Fragment>

@@ -7,8 +7,10 @@ import { CiUser } from "react-icons/ci";
 import { postUserRegister } from "../../../../services/api/register.api";
 import { UserRegister } from "../../../../interfaces/IUserRegister";
 import { redirect, useLocation } from "react-router-dom";
+
 function CardRegister(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<UserRegister>();
+
   let location = useLocation();
 
   async function handleSubmit(
