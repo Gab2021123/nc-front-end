@@ -17,13 +17,6 @@ function Login() {
 
       <section className="col-span-12 sm:col-span-4 flex justify-center items-center">
         <CardLogin />
-        <div className="animate-rotatePlus  left-[10px] bg-orange-600 rounded-[50%] w-[50px] h-[50px] absolute"></div>
-        <div className="animate-rotatePlus  left-[20px] bg-orange-600 rounded-[50%] w-[50px] h-[50px] absolute"></div>
-        <div className="animate-rotatePlus  left-[30px] bg-orange-600 rounded-[50%] w-[50px] h-[50px] absolute"></div>
-        <div className="animate-rotatePlus  left-[40px] bg-orange-600 rounded-[50%] w-[50px] h-[50px] absolute"></div>
-        <div className="animate-rotatePlus  left-[50px] bg-orange-600 rounded-[50%] w-[50px] h-[50px] absolute"></div>
-        <div className="animate-rotatePlus  left-[60px] bg-orange-600 rounded-[50%] w-[50px] h-[50px] absolute"></div>
-        <div className="animate-rotatePlus  left-[70px] bg-orange-600 rounded-[50%] w-[50px] h-[50px] absolute"></div>
       </section>
     </div>
   );

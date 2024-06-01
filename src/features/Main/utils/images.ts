@@ -3,7 +3,7 @@ import { ImageComponent } from "../components/Images/ImageComponent";
 export const images: ImageComponent[] = [
   {
     label: "Hamburguesas",
-    source: "../../../../public/Hamburguesa.jpg",
+    source: "/Hamburguesa.jpg",
     title: "Hamburguesas",
     to: "/",
     contrast: 0,
@@ -11,7 +11,7 @@ export const images: ImageComponent[] = [
   },
   {
     label: "Pizzerias",
-    source: "../../../../public/Pizza.jpg",
+    source: "/public/Pizza.jpg",
     title: "Pizzerias",
     to: "/",
     contrast: 0,
@@ -19,7 +19,7 @@ export const images: ImageComponent[] = [
   },
   {
     label: "Pollo frito",
-    source: "../../../../public/PolloFrito.jpg",
+    source: "/public/PolloFrito.jpg",
     title: "Pollo frito",
     to: "/",
     contrast: 0,
@@ -27,7 +27,7 @@ export const images: ImageComponent[] = [
   },
   {
     label: "Parrillas",
-    source: "../../../../public/Parrilla.jpg",
+    source: "/public/Parrilla.jpg",
     title: "Parrillas",
     to: "/",
     contrast: 0,
