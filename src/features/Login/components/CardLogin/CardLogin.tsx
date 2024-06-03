@@ -6,20 +6,24 @@ import InputSubmit from "../../../../components/InputSubmit/InputSubmit";
 import { postUser } from "../../../../services/api";
 import { User } from "../../../../interfaces/IUser";
 import { useAuthStore } from "../../../../store/appStore";
-import { jwtDecode } from "jwt-decode";
-import { Link } from "react-router-dom";
+import { jwtDecode, JwtHeader } from "jwt-decode";
+import { Link, useNavigate } from "react-router-dom";
 function CardLogin(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<User | undefined>();
   const setToken = useAuthStore((state) => state.setToken);
   const setPerfil = useAuthStore((state) => state.setPerfil);
+  const navigate = useNavigate();
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    const token = await postUser(data);
-    console.log(jwtDecode(String(token.access_token)));
-    console.log(token.access_token);
-    setToken(token.access_token);
-    setPerfil(jwtDecode(token, { header: true }));
+    try {
+      const token = await postUser(data);
+      console.log(token.access_token);
+      setToken(token.access_token);
+      setPerfil(jwtDecode<JwtHeader>(String(token.access_token)));
+      navigate("/principal");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>): void {

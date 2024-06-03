@@ -1,14 +1,17 @@
 import React from "react";
-import Navigation from "../components/Navigation/Navigation";
-import Polygn from "../components/Polygn/Polygn";
-import Panel from "../components/Panel/Panel";
-import ImagesSvg from "../components/ImagesSvg/ImagesSvg";
-import Footer from "../components/Footer/Footer";
-import ImageComponents from "../components/Images/ImageComponent";
-import { images } from "../utils/images";
-function Main() {
+
+import Footer from "../../Main/components/Footer/Footer";
+import ImageComponents from "../../Main/components/Images/ImageComponent";
+import ImagesSvg from "../../Main/components/ImagesSvg/ImagesSvg";
+import Panel from "../../Main/components/Panel/Panel";
+import Polygn from "../../Main/components/Polygn/Polygn";
+import { images } from "../../Main/utils/images";
+import Navigation from "../../Main/components/Navigation/Navigation";
+
+function Principal() {
   return (
     <React.Fragment>
+      s
       <div className="max-w-full min-h-screen relative grid grid-row-12 sm:grid-cols-12  gap-[50px]">
         <Polygn />
         <Navigation />
@@ -33,4 +36,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Principal;

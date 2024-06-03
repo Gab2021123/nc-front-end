@@ -35,6 +35,9 @@ export default {
         0: "0",
         1: "25px",
       },
+      dropShadow: {
+        menu: "1px 1px 1px #4700b3",
+      },
     },
   },
   plugins: [],
