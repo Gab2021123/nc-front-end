@@ -6,26 +6,18 @@ import InputSubmit from "../../../../components/InputSubmit/InputSubmit";
 import { CiUser } from "react-icons/ci";
 import { postUserRegister } from "../../../../services/api/register.api";
 import { UserRegister } from "../../../../interfaces/IUserRegister";
-import { redirect, useLocation } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 function CardRegister(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<UserRegister>();
-
-  let location = useLocation();
+  const navigate = useNavigate();
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>
   ): Promise<void> {
     try {
       event.preventDefault();
-      const resRegister = await postUserRegister(data);
-      /*  const navigate = useNavigate();
-      if (resRegister) {
-        navigate("/login");
-      } */
-      console.log(location.state);
-      redirect("/login");
-      console.log(resRegister.data);
+      await postUserRegister(data);
+      navigate("/login");
     } catch (error) {
       console.error(error);
     }

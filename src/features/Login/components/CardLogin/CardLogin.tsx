@@ -8,24 +8,40 @@ import { User } from "../../../../interfaces/IUser";
 import { useAuthStore } from "../../../../store/appStore";
 import { jwtDecode, JwtHeader } from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function CardLogin(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<User | undefined>();
   const setToken = useAuthStore((state) => state.setToken);
   const setPerfil = useAuthStore((state) => state.setPerfil);
   const navigate = useNavigate();
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const { perfil } = useAuthStore();
+
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ): Promise<void> {
     event.preventDefault();
     try {
       const token = await postUser(data);
       console.log(token.access_token);
       setToken(token.access_token);
-      setPerfil(jwtDecode<JwtHeader>(String(token.access_token)));
+      await setPerfil(jwtDecode<JwtHeader>(String(token.access_token)));
+      setTimeout(() => {
+        toast(
+          toast.success(`Accesa a su principal ${perfil.username}`, {
+            position: "top-right",
+          })
+        );
+      }, 500);
+
       navigate("/principal");
     } catch (error) {
       console.log(error);
+      toast.error("Login Incorrecto !", {
+        position: "top-right",
+      });
     }
   }
-
   function handleChange(event: ChangeEvent<HTMLInputElement>): void {
     const value = event.target.value;
     const name = event.target.name;
@@ -86,6 +102,7 @@ function CardLogin(): ReactElement<HTMLDivElement> {
           </Link>
         </form>
       </div>
+      <ToastContainer autoClose={2000} />
     </React.Fragment>
   );
 }

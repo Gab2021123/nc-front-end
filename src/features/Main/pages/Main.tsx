@@ -14,7 +14,7 @@ function Main() {
         <Navigation />
         <Panel />
         <ImagesSvg />
-        <div className="grid col-span-full grid-flow-row sm:grid-flow-col place-items-center">
+        <div className="grid  col-span-full grid-flow-row sm:grid-flow-col place-items-center">
           {images.map((e, index) => (
             <ImageComponents
               saturate={150}

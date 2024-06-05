@@ -7,14 +7,15 @@ import Panel from "../../Main/components/Panel/Panel";
 import Polygn from "../../Main/components/Polygn/Polygn";
 import { images } from "../../Main/utils/images";
 import Navigation from "../../Main/components/Navigation/Navigation";
+/* import NavigationPrincipal from "../components/NavigationPrincipal/NavigationPrincipal"; */
 
 function Principal() {
   return (
     <React.Fragment>
-      s
       <div className="max-w-full min-h-screen relative grid grid-row-12 sm:grid-cols-12  gap-[50px]">
         <Polygn />
         <Navigation />
+
         <Panel />
         <ImagesSvg />
         <div className="grid col-span-full grid-flow-row sm:grid-flow-col place-items-center">

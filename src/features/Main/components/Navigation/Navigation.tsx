@@ -3,13 +3,17 @@ import { PiMotorcycle } from "react-icons/pi";
 import { BiHelpCircle } from "react-icons/bi";
 import { MdOutlineWork } from "react-icons/md";
 import LisItemNavigation from "../ListItemNavigation/LisItemNavigation";
+import { useAuthStore } from "../../../../store/appStore";
 import SelectOptions from "../SelectOptions/SelectOptions";
+import User from "../../../Principal/components/User/User";
 function Navigation(): ReactElement<HTMLElement> {
+  const { isAuth, perfil } = useAuthStore();
+
   return (
     <React.Fragment>
       <nav className="bg-transparent flex flex-col col-span-6 sm:px-[32px] justify-between sm:flex sm:gap-[82px] sm:col-span-12 sm:flex-row ">
         <div>
-          <img src="/public/logo.jpg" alt="" />
+          <img src="/public/logo.png" alt="flashfood" width={285} height={85} />
         </div>
         <div className="z-10  items-center  flex-col sm:flex sm:flex-row  flex gap-[82px] list-none ">
           <LisItemNavigation
@@ -47,7 +51,11 @@ function Navigation(): ReactElement<HTMLElement> {
             Contacto
           </LisItemNavigation>
 
-          <SelectOptions />
+          {isAuth ? (
+            <User nombre={perfil.nombre} email={perfil.username} />
+          ) : (
+            <SelectOptions />
+          )}
         </div>
       </nav>
     </React.Fragment>

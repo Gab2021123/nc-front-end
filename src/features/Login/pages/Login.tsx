@@ -1,8 +1,6 @@
 import CardLogin from "../components/CardLogin/CardLogin";
-/* import { useAppStore } from "../../../store/appStore"; */
+
 function Login() {
-  /*   const { accessToken } = useAppStore(); //variable
-  const { setToken } = useAppStore(); //funcion */
   return (
     <div className="grid grid-cols-12 place-items-center place-content-center   max-w-full">
       <section className="hidden sm:col-span-8 sm:flex bg-orange-200 w-full h-screen">

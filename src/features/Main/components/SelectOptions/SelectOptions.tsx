@@ -81,12 +81,12 @@ function SelectOptions() {
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
       >
         <motion.li
-          className="p-2 bg-orange-300 transition-all hover:bg-orange-600 w-[150px] text-neutral-100 font-semibold"
+          className="p-2 bg-orange-500 transition-all hover:bg-orange-300 hover:text-orange-600 w-[150px] text-neutral-100 font-semibold"
           variants={itemsVariants}
         >
           <LinkListItem to="/login">Iniciar Sesión</LinkListItem>
         </motion.li>
-        <motion.li className="p-2 bg-orange-300 transition-all hover:bg-orange-600 w-[150px]  text-neutral-100 font-semibold">
+        <motion.li className="p-2 bg-orange-500 transition-all hover:bg-orange-300 hover:text-orange-600 w-[150px]  text-neutral-100 font-semibold">
           <LinkListItem to="/register">Registrar</LinkListItem>
         </motion.li>
       </motion.ul>
