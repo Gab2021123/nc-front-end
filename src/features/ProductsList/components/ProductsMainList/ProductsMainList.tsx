@@ -15,27 +15,16 @@ const ProductsMainList = () => {
     getFoods();
   }, []);
 
-  const handleClick = async (e: any) => {
-    let productId = Number(e.target.value);
-
-    try {
-      const res = await addCart(1, productId);
-      if (res) {
-        window.alert("agregado al carrito");
-      }
-    } catch (error) {}
-  };
   return (
     <div>
       {products.map((product: any) => {
         return (
-          <div>
-            <h1>Nombre: {product.nombre}</h1>
-            <h3>Precio: ${product.precio}</h3>
-            <button value={product.id} onClick={handleClick}>
-              Agregar al carrito
-            </button>
-          </div>
+          <Link to={`/productdetail/${product.id}`}>
+            <div>
+              <h1>Nombre: {product.nombre}</h1>
+              <h3>Precio: ${product.precio}</h3>
+            </div>
+          </Link>
         );
       })}
 

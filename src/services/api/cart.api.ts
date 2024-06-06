@@ -18,14 +18,23 @@ import { baseUrl } from "./base.api";
 
 export const getCart = async (clientId: number): Promise<any> => {
   try {
+    console.log("Client id " + clientId);
+
     const res = await baseUrl.get(`/cart/${clientId}/`);
-    return res.data;
-  } catch (error) {}
+
+    if (res) {
+      return res.data;
+    } else {
+      throw new Error("imposible cargar el carrito");
+    }
+  } catch (error) {
+    window.alert(error);
+  }
 };
 
-export const deleteCart = async (itemCarId: number) => {
+export const deleteCart = async (itemCarId: number, clientId: number) => {
   try {
-    await baseUrl.delete(`/cart/${itemCarId}`);
+    await baseUrl.delete(`/cart/product/${itemCarId}/client/${clientId}`);
     return "success";
   } catch (error) {}
 };

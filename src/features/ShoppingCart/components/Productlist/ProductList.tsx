@@ -3,6 +3,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import { useState, useEffect } from "react";
 import { getCart, deleteCart } from "../../../../services/api/cart.api";
 import { getProduct } from "../../../../services/api/products.api";
+import { useAuthStore } from "../../../../store/appStore";
 
 type Product = {
   clientId: number;
@@ -19,7 +20,7 @@ type ProductDetails = {
 
 const ProductList = () => {
   const [loading, setLoading] = useState(false);
-
+  const { perfil } = useAuthStore();
   const [products, setProducts] = useState<Array<Product>>([]);
   const [productDetails, setProductDetails] = useState<Array<ProductDetails>>(
     []
@@ -27,7 +28,7 @@ const ProductList = () => {
 
   const fetchCart = async () => {
     setLoading(true); // Iniciar la carga
-    const cart = await getCart(1);
+    const cart = await getCart(perfil.sub);
     await setProducts(cart);
     setLoading(false); // Finalizar la carga
   };
@@ -87,7 +88,7 @@ const ProductList = () => {
     let id = Number(e.target.value);
     console.log("id del product" + id);
     await setLoading(true);
-    const response = await deleteCart(id);
+    const response = await deleteCart(id, perfil.sub);
     if (response === "success") {
       // Actualizar el estado de manera inmutable
       await fetchCart();
