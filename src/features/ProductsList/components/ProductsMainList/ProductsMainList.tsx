@@ -1,5 +1,5 @@
 import { getProducts } from "../../../../services/api/products.api";
-import { addCart } from "../../../../services/api/cart.api";
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const ProductsMainList = () => {
     <div>
       {products.map((product: any) => {
         return (
-          <Link to={`/productdetail/${product.id}`}>
+          <Link key={product.id} to={`/productdetail/${product.id}`}>
             <div>
               <h1>Nombre: {product.nombre}</h1>
               <h3>Precio: ${product.precio}</h3>

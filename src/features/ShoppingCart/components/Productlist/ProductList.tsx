@@ -86,14 +86,17 @@ const ProductList = () => {
 
   const handleClick = async (e: any) => {
     let id = Number(e.target.value);
-    console.log("id del product" + id);
-    await setLoading(true);
+    setLoading(true);
     const response = await deleteCart(id, perfil.sub);
     if (response === "success") {
-      // Actualizar el estado de manera inmutable
-      await fetchCart();
-
-      console.log(products);
+      // Obtener una copia actualizada del carrito sin el producto eliminado
+      const updatedCart = products.filter(
+        (product) => product.productId !== id
+      );
+      // Actualizar el estado con la nueva lista de productos
+      setProducts(updatedCart);
+      // No es necesario llamar a fetchCart si actualizas el estado aquí
+      setLoading(false);
     }
   };
 
@@ -104,12 +107,13 @@ const ProductList = () => {
     <div>
       {uniqueProductDetails.map((detail) => {
         // Obtener la cantidad total del objeto productQuantities
-        const { quantity } = productQuantities[detail.id];
-
+        const productQuantity = productQuantities[detail.id];
+        const quantity = productQuantity ? productQuantity.quantity : 0;
         // Encuentra el primer producto que coincida con el productId actual
-        const productToDelete = products.find(
-          (product) => product.productId === detail.id
-        );
+
+        if (quantity === 0) {
+          return <p>No hay productos en el carrito</p>;
+        }
 
         return (
           <div key={detail.id}>
@@ -118,12 +122,9 @@ const ProductList = () => {
               precio={detail.precio}
               cantidad={quantity} // Pasa la cantidad total sumada
             />
-            {/* Renderizar un solo botón de eliminar para el productId */}
-            {productToDelete && (
-              <button value={productToDelete.id} onClick={handleClick}>
-                eliminar
-              </button>
-            )}
+            <button value={detail.id} onClick={handleClick}>
+              eliminar
+            </button>
           </div>
         );
       })}
