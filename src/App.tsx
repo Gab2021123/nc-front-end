@@ -6,6 +6,8 @@ import Principal from "./features/Principal/pages/Principal";
 import ProductMainList from "./features/ProductsList/pages/ProductMainList";
 import Register from "./features/Register/pages/Register";
 import ShoppingCart from "./features/ShoppingCart/Pages/ShoppingCart";
+import ProductDetail from "./features/ProductsList/components/ProductDetail/ProductDetail.tsx";
+import PostProduct from "./features/PostProduct/pages/PostProduct.tsx";
 import { useAuthStore } from "./store/appStore.ts";
 
 function App() {
@@ -23,6 +25,11 @@ function App() {
             <Route path="/principal" element={<Principal />}></Route>
             <Route path="/productlist" element={<ProductMainList />}></Route>
             <Route path="/shoppingcart" element={<ShoppingCart />}></Route>
+            <Route
+              path="productdetail/:productId"
+              element={<ProductDetail />}
+            ></Route>
+            <Route path="/postproduct" element={<PostProduct />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
