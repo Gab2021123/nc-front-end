@@ -20,7 +20,9 @@ export const getCart = async (clientId: number): Promise<any> => {
   try {
     const res = await baseUrl.get(`/cart/${clientId}/`);
     return res.data;
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const deleteCart = async (itemCarId: number) => {
