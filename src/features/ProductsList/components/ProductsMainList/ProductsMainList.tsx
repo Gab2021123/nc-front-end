@@ -1,11 +1,13 @@
 import { getProducts } from "../../../../services/api/products.api";
 
+
+import { useState, useEffect } from "react";
+=======
 import { useState, useEffect, BaseSyntheticEvent } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
 
 import { IoPricetagOutline } from "react-icons/io5";
 
-import { Link } from "react-router-dom";
 
 import Modal from "../ModalDetail/Modal";
 type CartItem = {
@@ -42,6 +44,11 @@ const ProductsMainList = () => {
     <div className="flex flex-col justify-center w-full">
       {products.map((product: Product) => {
         return (
+
+          <Link key={product.id} to={`/productdetail/${product.id}`}>
+            <div>
+              <h1>Nombre: {product.nombre}</h1>
+              <h3>Precio: ${product.precio}</h3>
           <div
             key={product.id}
             className="text-[#25282A] max-w-[78.125rem] w-full mx-auto py-2 border-4 rounded-3xl"
@@ -101,6 +108,7 @@ const ProductsMainList = () => {
                   </div>
                 </div>
               </Link>
+
             </div>
           </div>
         );
