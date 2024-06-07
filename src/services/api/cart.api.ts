@@ -22,6 +22,7 @@ export const getCart = async (clientId: number): Promise<any> => {
 
     const res = await baseUrl.get(`/cart/${clientId}/`);
 
+
     if (res) {
       return res.data;
     } else {
@@ -29,6 +30,7 @@ export const getCart = async (clientId: number): Promise<any> => {
     }
   } catch (error) {
     window.alert(error);
+
   }
 };
 

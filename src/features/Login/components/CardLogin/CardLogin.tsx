@@ -26,15 +26,14 @@ function CardLogin(): ReactElement<HTMLDivElement> {
       console.log(token.access_token);
       setToken(token.access_token);
       await setPerfil(jwtDecode<JwtHeader>(String(token.access_token)));
+      toast(
+        toast.success(`Accesa a su principal ${perfil.username}`, {
+          position: "top-right",
+        })
+      );
       setTimeout(() => {
-        toast(
-          toast.success(`Accesa a su principal ${perfil.username}`, {
-            position: "top-right",
-          })
-        );
-      }, 500);
-
-      navigate("/principal");
+        navigate("/principal");
+      }, 2000);
     } catch (error) {
       console.log(error);
       toast.error("Login Incorrecto !", {
