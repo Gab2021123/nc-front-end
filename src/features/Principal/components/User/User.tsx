@@ -25,7 +25,7 @@ function User(props: IUser) {
     <motion.nav
       initial={false}
       animate={isOpen ? "open" : "closed"}
-      className="drop-shadow-menu flex flex-col p-0 m-0 gap-5 justify-center items-center relative"
+      className="drop-shadow-menu  flex flex-col p-0 m-0 gap-5 justify-center items-center relative"
     >
       <motion.button
         whileTap={{ scale: 0.97 }}
@@ -64,7 +64,7 @@ function User(props: IUser) {
       </motion.button>
 
       <motion.ul
-        className="gap-[20px] absolute top-10 flex flex-wrap place-items-center right-3"
+        className="gap-[20px] absolute z-20 top-10 flex flex-wrap place-items-center right-3"
         variants={{
           open: {
             clipPath: "inset(0% 0% 0% 0% round 10px)",
