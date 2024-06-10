@@ -1,13 +1,9 @@
 import { getProducts } from "../../../../services/api/products.api";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, BaseSyntheticEvent } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
-
 import { IoPricetagOutline } from "react-icons/io5";
-
 import { Link } from "react-router-dom";
 import Navigation from "../../../Main/components/Navigation/Navigation";
-
 type CartItem = {
   id: number;
   productId: number;
@@ -34,11 +30,13 @@ const ProductsMainList = () => {
   }, []);
   const styleIcon = "";
   return (
+
     <>
       <Navigation />
       <div className="flex flex-col justify-center w-full">
         {products.map((product: Product) => {
           return (
+
             <div
               key={product.id}
               className="text-[#25282A] max-w-[65rem] w-full mx-auto py-2 border-4 rounded-3xl"
@@ -98,6 +96,7 @@ const ProductsMainList = () => {
                   </div>
                 </div>
               </Link>
+
             </div>
           );
         })}

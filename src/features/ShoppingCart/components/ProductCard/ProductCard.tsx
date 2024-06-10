@@ -11,9 +11,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className="product-card">
-      <h2>{nombre}</h2>
-      <p>{cantidad}</p>
-      <p>${precio.toFixed(2)}</p>
+      <h2>Nombre: {nombre}</h2>
+      <p>Cantidad: {cantidad}</p>
+      <p>Precio: ${precio.toFixed(2)}</p>
     </div>
   );
 };
