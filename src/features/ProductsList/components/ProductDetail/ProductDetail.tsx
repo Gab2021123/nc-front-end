@@ -15,7 +15,7 @@ type DetailProduct = {
 const ProductDetail = () => {
   const { perfil } = useAuthStore();
   const location = useLocation();
-  const [detail, setDetail] = useState<DetailProduct | any>();
+  const [detail, setDetail] = useState<DetailProduct>();
 
   const path = location.pathname.split("/");
 
@@ -40,20 +40,41 @@ const ProductDetail = () => {
     } catch (error) {}
   };
   return (
-    <div>
-      {detail ? (
-        <div>
-          <h1>Nombre: {detail.nombre}</h1>
-          <h3>Precio: {detail.precio}</h3>
-        </div>
-      ) : (
-        <p>No hay detalle del producto</p>
-      )}
+    <div className="max-w-[1350px] max-h-full flex flex-col sm:flex sm:flex-row gap-10  justify-center items-center ">
+      <div className="flex flex-col justify-center items-center w-full h-full">
+        <img
+          className=" object-cover w-full h-[100vh] shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)]"
+          src="/public/Pizza.jpg"
+          alt=""
+        />
+      </div>
 
-      <button onClick={handleClick}>Agregar al carrito</button>
-      <Link to="/productlist">
-        <button>Volver</button>
-      </Link>
+      <div className="flex flex-col gap-4 w-[20vw]  h-[100vh] items-center justify-center text-center">
+        {detail ? (
+          <div className="flex flex-col gap-4">
+            <h1> {detail.nombre}</h1>
+            <h3> {detail.precio}</h3>
+            {detail.published ? <h1></h1> : <p></p>}
+          </div>
+        ) : (
+          <p>No hay detalle del producto</p>
+        )}
+        <div className="flex flex-row gap-4 items-center justify-center">
+          <button
+            className="bg-orange-600 hover:bg-orange-400 rounded-xl p-3 font-semibold text-neutral-300"
+            onClick={handleClick}
+          >
+            Agregar al carrito
+          </button>
+
+          <Link
+            className="bg-orange-600 hover:bg-orange-400 rounded-xl p-3 font-semibold text-neutral-300"
+            to="/productlist"
+          >
+            <button>Volver</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

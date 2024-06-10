@@ -2,10 +2,10 @@ import InputSearch from "../InputSearch/InputSearch";
 
 function Panel() {
   return (
-    <article className="sm:w-[810px] sm:h-[242px]  w-[540px]  h-[131.3px]   col-start-4 col-end-9 -z-10 bg-orange-50 flex flex-col items-center justify-between p-[15px] rounded-[30px] ">
-      <h1 className="text-orange-500 font-bold text-[48px]">
+    <article className=" z-10  w-[390px]  h-[131.3px] grid  col-span-full place-content-center  bg-orange-50  items-center justify-between p-[15px] rounded-[30px] tablet:w-[810px] tablet:h-[242px] tablet:place-content-center ">
+      <h2 className="text-orange-500 font-bold text-[24.5px] sm:text-[48px]">
         Delicias a la velocidad de la luz
-      </h1>
+      </h2>
       <p className="text-neutral-400 text-[16px]">Teletransportar tu pasión</p>
       <InputSearch
         id="inputSearch"
