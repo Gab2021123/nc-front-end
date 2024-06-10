@@ -1,15 +1,14 @@
 import { getProducts } from "../../../../services/api/products.api";
 
-
-import { useState, useEffect } from "react";
-=======
 import { useState, useEffect, BaseSyntheticEvent } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
 
 import { IoPricetagOutline } from "react-icons/io5";
 
+import { Link, useLocation } from "react-router-dom";
 
 import Modal from "../ModalDetail/Modal";
+import { BiBracket } from "react-icons/bi";
 type CartItem = {
   id: number;
   productId: number;
@@ -22,11 +21,14 @@ type Product = {
   precio: number;
   published?: boolean;
   cartItems: CartItem[];
+  category: string;
 };
 
 const ProductsMainList = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [open, setOpen] = useState<boolean>(false);
+  const location = useLocation();
+
   const handleClikcClose = (e: BaseSyntheticEvent) => {
     e.preventDefault();
     console.log(e.target);
@@ -37,18 +39,51 @@ const ProductsMainList = () => {
     setProducts(foods);
   };
   useEffect(() => {
-    getFoods();
+    if (location.pathname.split("/")[length - 1] === "productlist") {
+      getFoods();
+    }
   }, []);
+
+  useEffect(() => {
+    switch (location.pathname.split("/")[length - 1]) {
+      case "burger":
+        const burgerProducts = products.filter(
+          (product) => product.category === "burger"
+        );
+        setProducts(burgerProducts);
+        break;
+      case "pizza":
+        const pizzaProducts = products.filter(
+          (product) => product.category === "pizza"
+        );
+        setProducts(pizzaProducts);
+
+        break;
+
+      case "pollo":
+        const polloProducts = products.filter(
+          (product) => product.category === "pollo"
+        );
+        setProducts(polloProducts);
+        break;
+
+      case "carne":
+        const carneProducts = products.filter(
+          (product) => product.category === "carne"
+        );
+        setProducts(carneProducts);
+        break;
+
+      default:
+        break;
+    }
+  }, []);
+
   const styleIcon = "";
   return (
     <div className="flex flex-col justify-center w-full">
       {products.map((product: Product) => {
         return (
-
-          <Link key={product.id} to={`/productdetail/${product.id}`}>
-            <div>
-              <h1>Nombre: {product.nombre}</h1>
-              <h3>Precio: ${product.precio}</h3>
           <div
             key={product.id}
             className="text-[#25282A] max-w-[78.125rem] w-full mx-auto py-2 border-4 rounded-3xl"
@@ -108,7 +143,6 @@ const ProductsMainList = () => {
                   </div>
                 </div>
               </Link>
-
             </div>
           </div>
         );

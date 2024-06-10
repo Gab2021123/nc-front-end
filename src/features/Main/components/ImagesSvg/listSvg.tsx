@@ -11,18 +11,18 @@ const svg: Svg[] = [
   {
     id: 1,
     icon: <PiHamburgerThin size={75} />,
-    to: "burger",
+    to: "productlist/burger",
   },
   {
     id: 2,
     icon: <PiPizzaThin size={75} />,
-    to: "pizza",
+    to: "productlist/pizza",
   },
   {
     id: 3,
     icon: <MdOutlineOutdoorGrill size={75} />,
-    to: "parrilla",
+    to: "productlist/carne",
   },
-  { id: 4, icon: <GiChickenLeg size={75} />, to: "pollo" },
+  { id: 4, icon: <GiChickenLeg size={75} />, to: "productlist/pollo" },
 ];
 export default svg;

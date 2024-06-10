@@ -6,6 +6,8 @@ export const postUserRegister = async (
   user: UserRegister | undefined
 ): Promise<any> => {
   try {
+    console.log(user);
+
     const res = await baseUrl.post(registerEndpoint, user);
     return res.data;
   } catch (error) {
