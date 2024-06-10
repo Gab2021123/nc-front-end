@@ -1,7 +1,8 @@
-import { useState } from "react";
+/* import { useState } from "react"; */
 
+/* type Product = {}; */
 const PostProductForm = () => {
-  const [product, setProduct] = useState();
+  /*  const [product, setProduct] = useState(); */
 
   return (
     <div>
