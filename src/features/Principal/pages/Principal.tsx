@@ -7,18 +7,20 @@ import Panel from "../../Main/components/Panel/Panel";
 import Polygn from "../../Main/components/Polygn/Polygn";
 import { images } from "../../Main/utils/images";
 import Navigation from "../../Main/components/Navigation/Navigation";
+import { Swiper } from "swiper/react";
+
 /* import NavigationPrincipal from "../components/NavigationPrincipal/NavigationPrincipal"; */
 
 function Principal() {
   return (
     <React.Fragment>
-      <div className="max-w-full min-h-screen relative grid grid-row-12 sm:grid-cols-12  gap-[50px]">
+      <div className="  relative grid  grid-cols-12  gap-y-[50px] place-items-center ">
         <Polygn />
         <Navigation />
-
         <Panel />
         <ImagesSvg />
-        <div className="grid col-span-full grid-flow-row sm:grid-flow-col place-items-center">
+
+        <Swiper className="grid col-span-full  gap-3 grid-flow-row sm:grid-flow-col place-items-center">
           {images.map((e, index) => (
             <ImageComponents
               saturate={150}
@@ -30,7 +32,8 @@ function Principal() {
               to={e.to}
             />
           ))}
-        </div>
+        </Swiper>
+
         <Footer />
       </div>
     </React.Fragment>

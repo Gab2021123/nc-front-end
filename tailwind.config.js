@@ -38,6 +38,9 @@ export default {
       dropShadow: {
         menu: "1px 1px 1px #4700b3",
       },
+      screens: {
+        tablet: "765px",
+      },
     },
   },
   plugins: [],

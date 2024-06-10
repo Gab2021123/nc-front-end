@@ -3,7 +3,7 @@ import svg from "./listSvg";
 function ImagesSvg() {
   return (
     <>
-      <div className="z-10 col-start-4 col-end-10 flex flex-row justify-between items-center ">
+      <section className="z-10 grid grid-cols-2 grid-rows-2 col-span-full place-items-center  sm:col-start-4 sm:col-end-10 sm:flex sm:gap-x-7  justify-between items-center  ">
         {svg.map((e) => (
           <Link
             key={e.id}
@@ -13,7 +13,7 @@ function ImagesSvg() {
             {e.icon}
           </Link>
         ))}
-      </div>
+      </section>
     </>
   );
 }

@@ -6,15 +6,19 @@ import ImagesSvg from "../components/ImagesSvg/ImagesSvg";
 import Footer from "../components/Footer/Footer";
 import ImageComponents from "../components/Images/ImageComponent";
 import { images } from "../utils/images";
+import { Swiper } from "swiper/react";
+
+/* import { Slide } from "react-toastify"; */
 function Main() {
   return (
     <React.Fragment>
-      <div className="max-w-full min-h-screen relative grid grid-row-12 sm:grid-cols-12  gap-[50px]">
+      <div className="  relative grid  grid-cols-12  gap-y-[50px] place-items-center ">
         <Polygn />
         <Navigation />
         <Panel />
         <ImagesSvg />
-        <div className="grid  col-span-full grid-flow-row sm:grid-flow-col place-items-center">
+
+        <Swiper className="grid col-span-full  gap-3 grid-flow-row sm:grid-flow-col place-items-center">
           {images.map((e, index) => (
             <ImageComponents
               saturate={150}
@@ -26,7 +30,8 @@ function Main() {
               to={e.to}
             />
           ))}
-        </div>
+        </Swiper>
+
         <Footer />
       </div>
     </React.Fragment>
