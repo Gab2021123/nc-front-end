@@ -5,6 +5,7 @@ import { User } from "../../interfaces/IUser";
 
 export const postUser = async (user: User | undefined): Promise<any> => {
   try {
+    console.log(user);
     const res = await baseUrl.post(loginEndpoint, user);
 
     console.log(res.data);
