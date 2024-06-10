@@ -14,7 +14,7 @@ export const getProducts = async () => {
   } catch (error) {}
 };
 
-export const postProduct = async (product: any) => {
+export const postProduct = async (product: any, _image: File) => {
   try {
     const res = await baseUrl.post(`/products/`, product);
     if (res) {
