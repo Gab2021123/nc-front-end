@@ -21,10 +21,8 @@ type Product = {
   published?: boolean;
   cartItems: CartItem[];
 };
-
 const ProductsMainList = () => {
   const [products, setProducts] = useState<Product[]>([]);
-
   const getFoods = async () => {
     const foods = await getProducts();
     setProducts(foods);
