@@ -13,7 +13,7 @@ function Navigation(): ReactElement<HTMLElement> {
     <React.Fragment>
       <nav className="bg-transparent flex flex-col col-span-5 sm:px-[32px] justify-between  sm:gap-[82px] sm:col-span-full sm:grid  sm:w-full sm:grid-flow-col ">
         <div className="z-10">
-          <img src="/public/logo.png" alt="flashfood" width={285} height={85} />
+          <img src="/logo.png" alt="flashfood" width={285} height={85} />
         </div>
         <div className="z-10  items-center hidden  flex-col sm:flex sm:flex-row   gap-[82px] list-none ">
           <LisItemNavigation
