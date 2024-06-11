@@ -6,20 +6,22 @@ import { FaHeart, FaStar } from "react-icons/fa";
 import { IoPricetagOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
-import Navigation from "../../../Main/components/Navigation/Navigation";
+import { baseUrl } from "../../../../services/api/base.api";
 
-type CartItem = {
+/* type CartItem = {
   id: number;
   productId: number;
   clientId: number;
   quantity: number;
-};
+}; */
 type Product = {
   id: number;
   nombre: string;
   precio: number;
+  imagen: string;
   published?: boolean;
-  cartItems: CartItem[];
+  restaurantId: null;
+  categoryId: number;
 };
 const ProductsMainList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,7 +35,6 @@ const ProductsMainList = () => {
   const styleIcon = "";
   return (
     <>
-      <Navigation />
       <div className="flex flex-col justify-center w-full">
         {products.map((product: Product) => {
           return (
@@ -50,9 +51,11 @@ const ProductsMainList = () => {
                   id="cardview"
                 >
                   <img
-                    src="/Hamburguesa.jpg"
-                    className="w-full h-full justify-between rounded-lg object-cover md:max-w-[11.25rem] md:max-h-[11.25rem] max-h-[112px] aspect-auto"
-                    alt="Imagen 1"
+                    src={`${import.meta.env.VITE_API_ENDPOINT_URL}/${
+                      product.imagen
+                    }`}
+                    className="w-full h-full justify-between rounded-lg object-cover md:max-w-[11.25rem] md:max-h-[11.25rem] max-h-[112px] aspect-ratios"
+                    alt={product.nombre}
                   />
 
                   <div

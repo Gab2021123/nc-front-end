@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "../components/Navigation/Navigation";
+
 import Polygn from "../components/Polygn/Polygn";
 import Panel from "../components/Panel/Panel";
 import ImagesSvg from "../components/ImagesSvg/ImagesSvg";
@@ -7,6 +7,7 @@ import Footer from "../components/Footer/Footer";
 import ImageComponents from "../components/Images/ImageComponent";
 import { images } from "../utils/images";
 import { Swiper } from "swiper/react";
+import Navigation from "../components/Navigation/Navigation";
 
 /* import { Slide } from "react-toastify"; */
 function Main() {

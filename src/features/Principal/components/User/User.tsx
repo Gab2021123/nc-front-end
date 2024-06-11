@@ -30,7 +30,6 @@ function User(props: IUser) {
       <motion.button
         whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center"
       >
         <motion.div
           variants={{ open: { rotate: 180 }, close: { rotate: 0 } }}
@@ -64,7 +63,7 @@ function User(props: IUser) {
       </motion.button>
 
       <motion.ul
-        className="gap-[20px] absolute z-20 top-10 flex flex-wrap place-items-center right-3"
+        className="gap-[0px] absolute z-20 top-10 flex w-[290px]  flex-wrap place-items-center right-0"
         variants={{
           open: {
             clipPath: "inset(0% 0% 0% 0% round 10px)",
@@ -88,7 +87,7 @@ function User(props: IUser) {
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
       >
         <motion.li
-          className="p-2 bg-orange-500 transition-all hover:bg-orange-300 hover:text-orange-600 w-full text-neutral-100 font-semibold"
+          className="p-2 bg-orange-500 transition-all hover:bg-orange-300 hover:text-orange-600 w-full  text-neutral-100 font-semibold"
           variants={itemsVariants}
         >
           {props.nombre}
@@ -101,7 +100,7 @@ function User(props: IUser) {
             logout();
             navigate("/");
           }}
-          className="p-2 bg-orange-500 transition-all hover:bg-orange-300 hover:text-orange-600 w-full  text-neutral-100 font-semibold"
+          className="p-2 bg-orange-500 transition-all hover:bg-orange-300 hover:text-orange-600 w-full   text-neutral-100 font-semibold"
         >
           Cerrar Sesión
         </motion.button>
