@@ -1,5 +1,3 @@
-/* import { useState } from "react"; */
-
 import { ChangeEvent, FormEvent, useState } from "react";
 import InputSubmit from "../../../components/InputSubmit/InputSubmit";
 import { postProduct } from "../../../services/api/products.api";
@@ -9,7 +7,7 @@ type Product = {
   nombre: string;
   precio: number;
   published: boolean;
-  category: string;
+  categoryId: number;
 };
 
 /* type Product = {}; */
@@ -20,7 +18,7 @@ const PostProductForm = () => {
     nombre: "",
     precio: 0,
     published: false,
-    category: "",
+    categoryId: 0,
   });
   const [image, setImage] = useState<File | null>(null);
 
@@ -28,7 +26,11 @@ const PostProductForm = () => {
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ): void {
     const { name, value } = event.target;
-    setProduct({ ...product, [name]: value });
+    if (name === "categoryId") {
+      setProduct({ ...product, [name]: Number(value) });
+    } else {
+      setProduct({ ...product, [name]: value });
+    }
   }
 
   function handleImageChange(event: ChangeEvent<HTMLInputElement>) {
@@ -102,9 +104,9 @@ const PostProductForm = () => {
               Categoria
             </label>
             <select
-              id="category"
-              name="category"
-              value={product.category}
+              id="categoryId"
+              name="categoryId"
+              value={product.categoryId}
               onChange={handleChange}
               className="w-full border rounded p-2.5 text-sm text-gray-700 bg-gray-100 dark:text-gray-400 dark:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
               required
@@ -112,10 +114,10 @@ const PostProductForm = () => {
               <option value="" disabled hidden>
                 Categoria
               </option>
-              <option value="burger">Hamburguesa</option>
-              <option value="pizza">Pizza</option>
-              <option value="pollo">Pollo</option>
-              <option value="carne">Carne</option>
+              <option value="1">Hamburguesa</option>
+              <option value="3">Pizza</option>
+              <option value="2">Pollo</option>
+              <option value="4">Carne</option>
             </select>
           </div>
           <div className="mb-4">
