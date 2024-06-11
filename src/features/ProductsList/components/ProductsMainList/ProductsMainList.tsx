@@ -6,7 +6,6 @@ import { FaHeart, FaStar } from "react-icons/fa";
 import { IoPricetagOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
-import { baseUrl } from "../../../../services/api/base.api";
 
 /* type CartItem = {
   id: number;
