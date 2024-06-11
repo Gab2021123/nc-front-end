@@ -18,6 +18,9 @@ type Product = {
   id: number;
   nombre: string;
   precio: number;
+  imagen: string;
+  restaurantId: null;
+  categoryId: number;
   published?: boolean;
   cartItems: CartItem[];
 };
@@ -50,9 +53,11 @@ const ProductsMainList = () => {
                   id="cardview"
                 >
                   <img
-                    src="/Hamburguesa.jpg"
+                    src={`${import.meta.env.VITE_API_ENDPOINT_URL}/${
+                      product.imagen
+                    }`}
                     className="w-full h-full justify-between rounded-lg object-cover md:max-w-[11.25rem] md:max-h-[11.25rem] max-h-[112px] aspect-auto"
-                    alt="Imagen 1"
+                    alt={product.nombre}
                   />
 
                   <div

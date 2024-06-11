@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getCart, deleteCart } from "../../../../services/api/cart.api";
 import { getProduct } from "../../../../services/api/products.api";
 import { useAuthStore } from "../../../../store/appStore";
+import Wave from "../Wave/Wave";
 
 type Product = {
   clientId: number;
@@ -29,24 +30,24 @@ const ProductList = () => {
   const fetchCart = async () => {
     setLoading(true); // Iniciar la carga
     const cart = await getCart(perfil.sub);
-    await setProducts(cart);
+    setProducts(cart);
     setLoading(false); // Finalizar la carga
   };
+  const fetchProductDetails = async () => {
+    const details = await Promise.all(
+      products.map(async (product) => {
+        const detail = await getProduct(product.productId);
+        return detail;
+      })
+    );
+    setProductDetails(details);
+  };
+
   useEffect(() => {
     fetchCart();
   }, []);
 
   useEffect(() => {
-    const fetchProductDetails = async () => {
-      const details = await Promise.all(
-        products.map(async (product) => {
-          const detail = await getProduct(product.productId);
-          return detail;
-        })
-      );
-      setProductDetails(details);
-    };
-
     if (products.length) {
       fetchProductDetails();
     }
@@ -102,6 +103,7 @@ const ProductList = () => {
   }
   return (
     <div>
+      <Wave className="absolute top-0 left-0" />
       {uniqueProductDetails.map((detail) => {
         // Obtener la cantidad total del objeto productQuantities
         const { quantity } = productQuantities[detail.id];
@@ -132,6 +134,7 @@ const ProductList = () => {
       <Link to="/">
         <button>Volver al inicio</button>
       </Link>
+      <Wave className="absolute left-0  bottom-0" />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import LinkListItem from "../LinkListItem/LinkListItem";
 interface Props extends React.LiHTMLAttributes<HTMLLIElement> {
   left?: boolean;
   rigth?: boolean;
-  icon: ReactElement<IconType>;
+  icon?: ReactElement<IconType> | string;
   to: string;
   avaible?: boolean;
 }
