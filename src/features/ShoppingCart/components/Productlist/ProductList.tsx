@@ -6,6 +6,8 @@ import { getProduct } from "../../../../services/api/products.api";
 import { useAuthStore } from "../../../../store/appStore";
 import Wave from "../Wave/Wave";
 
+import Navigation from "../../../Main/components/Navigation/Navigation";
+
 type Product = {
   clientId: number;
   id: number;
@@ -17,6 +19,7 @@ type ProductDetails = {
   id: number;
   nombre: string;
   precio: number;
+  imagen: string;
 };
 
 const ProductList = () => {
@@ -26,6 +29,10 @@ const ProductList = () => {
   const [productDetails, setProductDetails] = useState<Array<ProductDetails>>(
     []
   );
+
+  const [uniqueProductDetails, setUniqueProductDetails] = useState<
+    Array<ProductDetails>
+  >([]);
 
   const fetchCart = async () => {
     setLoading(true); // Iniciar la carga
@@ -44,6 +51,7 @@ const ProductList = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchCart();
   }, []);
 
@@ -51,7 +59,18 @@ const ProductList = () => {
     if (products.length) {
       fetchProductDetails();
     }
+
+    setLoading(false); // Finalizar la carga
   }, [products]);
+  useEffect(() => {
+    // Esta actualización depende de productDetails, no de products directamente
+    setUniqueProductDetails(
+      productDetails.filter(
+        (detail, index, self) =>
+          index === self.findIndex((t) => t.id === detail.id)
+      )
+    );
+  }, [productDetails]);
 
   // Crear un objeto que mapea productId a la cantidad total y al precio
   const productQuantities = products.reduce((acc, product) => {
@@ -79,63 +98,113 @@ const ProductList = () => {
   );
 
   // Filtrar detalles de productos para incluir solo una entrada por productId
-  const uniqueProductDetails = productDetails.filter(
-    (detail, index, self) => index === self.findIndex((t) => t.id === detail.id)
-  );
+  // const uniqueProductDetails = productDetails.filter(
+  //   (detail, index, self) => index === self.findIndex((t) => t.id === detail.id)
+  // );
 
   //* eliminar del carrito
 
   const handleClick = async (e: any) => {
     let id = Number(e.target.value);
-    console.log("id del product" + id);
-    await setLoading(true);
-    const response = await deleteCart(id, perfil.sub);
-    if (response === "success") {
-      // Actualizar el estado de manera inmutable
-      await fetchCart();
 
-      console.log(products);
+    setLoading(true);
+
+    try {
+      const response = await deleteCart(id, perfil.sub);
+      if (response === "success") {
+        // Actualizar el estado de manera inmutable
+        setProducts((currentProducts) =>
+          currentProducts.filter((product) => product.productId !== id)
+        );
+        // Esperar a que se actualice el estado de products
+        await new Promise((resolve) => setImmediate(resolve));
+        // Ahora puedes llamar a fetchCart o realizar otras operaciones necesarias
+        await fetchCart();
+      } else {
+        // Manejar la respuesta fallida
+        console.error("Error al eliminar el producto:", response);
+      }
+    } catch (error) {
+      // Manejar el error de la API
+      console.error("Error al llamar a deleteCart:", error);
+    } finally {
+      // Solo establecer loading a false después de que todas las operaciones asíncronas hayan terminado
+      setLoading(false);
     }
   };
 
   if (loading) {
     return <div>Cargando...</div>; // Mostrar un mensaje o spinner de carga
   }
+  if (products.length < 1) {
+    return (
+      <>
+        <Navigation></Navigation>
+        <h1 className=" text-center text-4xl text-orange-500 font-bold py-12">
+          No hay productos en el carrito...
+        </h1>
+
+        <Link to="/principal">
+          <button className="text-center absolute left-1/2 -translate-x-1/2 bg-orange-600 p-4 text-neutral-300 font-semibold rounded-xl hover:bg-orange-500">
+            Volver al inicio
+          </button>
+        </Link>
+      </>
+    );
+  }
   return (
-    <div>
-      <Wave className="absolute top-0 left-0" />
-      {uniqueProductDetails.map((detail) => {
-        // Obtener la cantidad total del objeto productQuantities
-        const { quantity } = productQuantities[detail.id];
+    <>
+      <Navigation></Navigation>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {/* <Wave className="absolute top-0 left-0" /> */}
+        {uniqueProductDetails.map((detail, index) => {
+          // Obtener la cantidad total del objeto productQuantities
+          if (!productQuantities[detail.id]) {
+            return null;
+          }
+          const { quantity } = productQuantities[detail.id];
 
-        // Encuentra el primer producto que coincida con el productId actual
-        const productToDelete = products.find(
-          (product) => product.productId === detail.id
-        );
+          // Encuentra el primer producto que coincida con el productId actual
 
-        return (
-          <div key={detail.id}>
-            <ProductCard
-              nombre={detail.nombre}
-              precio={detail.precio}
-              cantidad={quantity} // Pasa la cantidad total sumada
-            />
-            {/* Renderizar un solo botón de eliminar para el productId */}
-            {productToDelete && (
-              <button value={productToDelete.id} onClick={handleClick}>
-                eliminar
-              </button>
-            )}
-          </div>
-        );
-      })}
-      {/* Renderizar el precio total */}
-      <div>Total a pagar: ${totalPrice}.00</div>
-      <Link to="/">
-        <button>Volver al inicio</button>
-      </Link>
-      <Wave className="absolute left-0  bottom-0" />
-    </div>
+          return (
+            <div
+              key={detail.id}
+              className={`grid col-span-${index} row-span-${
+                index + 1
+              } justify-center  p-4 m-2  `}
+            >
+              {/* items-center border border-gray-500 p-4 m-2 bg-orange-200 shadow-lg rounded-lg max-w-[250px] */}
+              <ProductCard
+                nombre={detail.nombre}
+                precio={detail.precio}
+                cantidad={quantity} // Pasa la cantidad total sumada
+                imagen={`${import.meta.env.VITE_API_ENDPOINT_URL}/${
+                  detail.imagen
+                }`}
+              />
+              {/* Renderizar un solo botón de eliminar para el productId */}
+              {detail.id && (
+                <button value={detail.id} onClick={handleClick}>
+                  eliminar
+                </button>
+              )}
+            </div>
+          );
+        })}
+        {/* Renderizar el precio total */}
+        {/* <Wave className="absolute left-0  bottom-0" /> */}
+      </div>
+      <div className="">
+        <div className="flex flex-col justify-center items-center">
+          Total a pagar: ${totalPrice}.00
+        </div>
+        <Link to="/principal">
+          <button className="text-center absolute left-1/2 -translate-x-1/2 bg-orange-600 p-4 text-neutral-300 font-semibold rounded-xl hover:bg-orange-500">
+            Volver al inicio
+          </button>
+        </Link>
+      </div>
+    </>
   );
 };
 
