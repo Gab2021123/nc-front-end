@@ -71,7 +71,7 @@ const ProductDetail = () => {
             className="bg-orange-600 hover:bg-orange-400 rounded-xl p-3 font-semibold text-neutral-300"
             to="/productlist"
           >
-            <button>Volver</button>
+            <button>Volver a la lista de productos</button>
           </Link>
         </div>
       </div>

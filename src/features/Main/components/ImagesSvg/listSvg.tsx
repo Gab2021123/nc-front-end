@@ -21,8 +21,8 @@ const svg: Svg[] = [
   {
     id: 3,
     icon: <MdOutlineOutdoorGrill size={75} />,
-    to: "parrilla",
+    to: "beef",
   },
-  { id: 4, icon: <GiChickenLeg size={75} />, to: "pollo" },
+  { id: 4, icon: <GiChickenLeg size={75} />, to: "chiken" },
 ];
 export default svg;
