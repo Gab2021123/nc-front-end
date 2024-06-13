@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import { useState, useEffect } from "react";
-import { getCart, deleteCart } from "../../../../services/api/cart.api";
+import {
+  getCart,
+  deleteCart,
+  removeCart,
+} from "../../../../services/api/cart.api";
 import { getProduct } from "../../../../services/api/products.api";
 import { useAuthStore } from "../../../../store/appStore";
 import Wave from "../Wave/Wave";
@@ -29,6 +33,7 @@ const ProductList = () => {
   const [productDetails, setProductDetails] = useState<Array<ProductDetails>>(
     []
   );
+  const [refreshCart, setRefreshCart] = useState(false);
 
   const [uniqueProductDetails, setUniqueProductDetails] = useState<
     Array<ProductDetails>
@@ -53,7 +58,7 @@ const ProductList = () => {
   useEffect(() => {
     setLoading(true);
     fetchCart();
-  }, []);
+  }, [refreshCart]);
 
   useEffect(() => {
     if (products.length) {
@@ -103,6 +108,26 @@ const ProductList = () => {
   // );
 
   //* eliminar del carrito
+
+  const handlePurchase = async () => {
+    setLoading(true);
+    try {
+      const response = await removeCart(perfil.sub);
+
+      if (response === "success") {
+        window.alert("Compra realizada");
+        setRefreshCart((prev) => !prev);
+      } else {
+        throw new Error("Error al comprar");
+      }
+
+      setLoading(false);
+    } catch (error: any) {
+      console.log("Error al comprar" + error.message);
+
+      setLoading(false);
+    }
+  };
 
   const handleClick = async (e: any) => {
     let id = Number(e.target.value);
@@ -194,15 +219,23 @@ const ProductList = () => {
         {/* Renderizar el precio total */}
         {/* <Wave className="absolute left-0  bottom-0" /> */}
       </div>
-      <div className="">
+      <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center">
           Total a pagar: ${totalPrice}.00
         </div>
-        <Link to="/principal">
-          <button className="text-center absolute left-1/2 -translate-x-1/2 bg-orange-600 p-4 text-neutral-300 font-semibold rounded-xl hover:bg-orange-500">
-            Volver al inicio
+        <div className="flex items-center justify-between flex-row w-1/4 h-[100px]">
+          <Link to="/principal">
+            <button className="text-center   bg-orange-600 p-4 text-neutral-300 font-semibold rounded-xl hover:bg-orange-500">
+              Volver al inicio
+            </button>
+          </Link>
+          <button
+            onClick={handlePurchase}
+            className="text-center    bg-orange-600 p-4 text-neutral-300 font-semibold rounded-xl hover:bg-orange-500"
+          >
+            Comprar
           </button>
-        </Link>
+        </div>
       </div>
     </>
   );
