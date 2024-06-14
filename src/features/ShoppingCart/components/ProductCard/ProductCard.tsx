@@ -19,7 +19,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div className="flex flex-col gap-y-[2.5rem] justify-center items-center">
       {/* <img className="w-10px h-full object-cover" src={`${imagen}`} alt="" /> */}
       <ImageComponents
-        absolute={false}
         label={nombre}
         source={imagen}
         title=""
