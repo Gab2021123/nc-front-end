@@ -1,0 +1,17 @@
+.name {
+  font-size: 35pt;
+  font-style: italic;
+  font-family: "Poppins", sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 15px;
+  -webkit-text-stroke-color: rgba(237, 149, 17, 0.832);
+  -webkit-text-stroke-width: 1.8px;
+}
+.precio {
+  font-size: 25pt;
+  font-family: "Poppins", sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 12px;
+  -webkit-text-stroke-color: red;
+  -webkit-text-stroke-width: 2px;
+}

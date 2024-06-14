@@ -11,9 +11,10 @@ export const getProducts = async () => {
   try {
     const res = await baseUrl.get(`/products`);
     return res.data;
-  } catch (error) {}
+  } catch (error) {
+    console.warn(error);
+  }
 };
-
 export const postProduct = async (product: any, image: File) => {
   try {
     const formData = new FormData();

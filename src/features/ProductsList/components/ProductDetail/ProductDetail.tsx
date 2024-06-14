@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getProduct } from "../../../../services/api/products.api";
 import { Link } from "react-router-dom";
-
+import "./ProductDetail.css";
 type DetailProduct = {
   nombre: string;
   precio: number;
   published: boolean;
+  imagen: string;
   id: number;
 };
 
@@ -23,6 +24,7 @@ const ProductDetail = () => {
 
   const getDetail = async () => {
     const detalle = await getProduct(productId);
+    console.log(detalle);
     setDetail(detalle);
     return detalle;
   };
@@ -43,23 +45,23 @@ const ProductDetail = () => {
     <div className="max-w-[1350px] max-h-full flex flex-col sm:flex sm:flex-row gap-10  justify-center items-center ">
       <div className="flex flex-col justify-center items-center w-full h-full">
         <img
-          className=" object-cover w-full h-[100vh] shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)]"
-          src="/public/Pizza.jpg"
-          alt=""
+          className=" object-cover rounded-lg shadow-[0_25px_50px_-12px_rgb(0,0,0,0.25)]"
+          src={`${import.meta.env.VITE_API_ENDPOINT_URL}/${detail?.imagen}`}
+          alt={detail?.nombre}
         />
       </div>
 
       <div className="flex flex-col gap-4 w-[20vw]  h-[100vh] items-center justify-center text-center">
         {detail ? (
           <div className="flex flex-col gap-4">
-            <h1> {detail.nombre}</h1>
-            <h3> {detail.precio}</h3>
+            <h2 className="name"> {detail.nombre}</h2>
+            <h2 className="precio"> ${detail.precio.toFixed(2)}</h2>
             {detail.published ? <h1></h1> : <p></p>}
           </div>
         ) : (
           <p>No hay detalle del producto</p>
         )}
-        <div className="flex flex-row gap-4 items-center justify-center">
+        <div className="flex flex-row gap-4 items-start sm:items-center sm:justify-center">
           <button
             className="bg-orange-600 hover:bg-orange-400 rounded-xl p-3 font-semibold text-neutral-300"
             onClick={handleClick}
