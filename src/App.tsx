@@ -8,6 +8,7 @@ import Register from "./features/Register/pages/Register";
 import ShoppingCart from "./features/ShoppingCart/Pages/ShoppingCart";
 import ProductDetail from "./features/ProductsList/components/ProductDetail/ProductDetail.tsx";
 import PostProduct from "./features/PostProduct/pages/PostProduct.tsx";
+import ProductsSearch from "./features/ProductsSearch/pages/ProductsSearch.tsx";
 import { useAuthStore } from "./store/appStore.ts";
 import Contacto from "./features/Contacto/Contacto.tsx";
 
@@ -33,6 +34,10 @@ function App() {
             ></Route>
             <Route path="/postproduct" element={<PostProduct />}></Route>
           </Route>
+          <Route path="/principal/burger" element={<ProductsSearch />}></Route>
+          <Route path="/principal/pizza" element={<ProductsSearch />}></Route>
+          <Route path="/principal/beef" element={<ProductsSearch />}></Route>
+          <Route path="/principal/chiken" element={<ProductsSearch />}></Route>
         </Routes>
       </BrowserRouter>
     </>

@@ -1,12 +1,8 @@
-import { getProducts } from "../../../../services/api/products.api";
-
-import { useState, useEffect } from "react";
-import { FaHeart, FaStar } from "react-icons/fa";
-
-import { IoPricetagOutline } from "react-icons/io5";
-
 import { Link } from "react-router-dom";
-import Navigation from "../../../Main/components/Navigation/Navigation";
+import { useState, useEffect } from "react";
+import { getProducts } from "../../../services/api/products.api";
+import { FaHeart, FaStar } from "react-icons/fa";
+import { IoPricetagOutline } from "react-icons/io5";
 
 type CartItem = {
   id: number;
@@ -24,42 +20,39 @@ type Product = {
   published?: boolean;
   cartItems: CartItem[];
 };
-const ProductsMainList = () => {
+type ProductFindProps = {
+  value: string;
+};
+
+const ProductFindComponent: React.FC<ProductFindProps> = ({ value }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const getFoods = async () => {
     const foods = await getProducts();
-    setProducts(foods);
+    setProducts(foods); // Actualiza el estado de los productos
+
+    // Mueve la lógica de filtrado aquí dentro para que se ejecute después de obtener los productos
+    const filterProducts = foods.filter((product: any) =>
+      product.nombre.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredProducts(filterProducts);
   };
+
   useEffect(() => {
     getFoods();
-  }, []);
-  if (products.length < 1) {
-    return (
-      <>
-        <Navigation />
-        <div>
-          <h1 className="text-center text-4xl text-orange-500 font-bold py-12">
-            No hay productos...
-          </h1>
-          <Link to="/principal">
-            <button className="text-center absolute left-1/2 -translate-x-1/2 bg-orange-600 p-4 text-neutral-300 font-semibold rounded-xl hover:bg-orange-500">
-              Volver al inicio
-            </button>
-          </Link>
-        </div>
-      </>
-    );
-  }
+  }, [value]);
   const styleIcon = "";
   return (
-    <>
-      <Navigation />
+    <div className="bg-red">
       <div className="flex flex-col justify-center w-full">
-        {products.map((product: Product) => {
+        {filteredProducts.map((product: Product, index) => {
+          if (index > 2) {
+            return null;
+          }
           return (
             <div
               key={product.id}
-              className="text-[#25282A] max-w-[65rem] w-full mx-auto py-2 border-4 rounded-3xl"
+              className="text-[#25282A] max-w-[65rem] w-full mx-auto py-2 rounded-3xl"
             >
               <Link
                 to={`/productdetail/${product.id}`}
@@ -121,15 +114,9 @@ const ProductsMainList = () => {
             </div>
           );
         })}
-
-        <Link to="/principal">
-          <button className="text-center absolute left-1/2 -translate-x-1/2 bg-orange-600 p-4 text-neutral-300 font-semibold rounded-xl hover:bg-orange-500">
-            Volver al inicio
-          </button>
-        </Link>
       </div>
-    </>
+    </div>
   );
 };
 
-export default ProductsMainList;
+export default ProductFindComponent;

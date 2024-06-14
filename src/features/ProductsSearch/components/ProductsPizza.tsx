@@ -1,12 +1,12 @@
-import { getProducts } from "../../../../services/api/products.api";
+import { getProducts } from "../../../services/api/products.api";
 
 import { useState, useEffect } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
 
 import { IoPricetagOutline } from "react-icons/io5";
 
-import { Link } from "react-router-dom";
-import Navigation from "../../../Main/components/Navigation/Navigation";
+import { Link, useLocation } from "react-router-dom";
+import Navigation from "../../Main/components/Navigation/Navigation";
 
 type CartItem = {
   id: number;
@@ -26,13 +26,20 @@ type Product = {
 };
 const ProductsMainList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const location = useLocation().pathname;
+  const path = location.split("/")[location.split("/").length - 1];
   const getFoods = async () => {
     const foods = await getProducts();
-    setProducts(foods);
+    const filterFoods = foods.filter((food: any) => food.categoryId === 3);
+    setProducts(filterFoods);
   };
   useEffect(() => {
     getFoods();
   }, []);
+
+  if (path !== "pizza") {
+    return null; // No renderiza nada si location es diferente de "beef"
+  }
   if (products.length < 1) {
     return (
       <>

@@ -22,15 +22,13 @@ export const getCart = async (clientId: number): Promise<any> => {
 
     const res = await baseUrl.get(`/cart/${clientId}/`);
 
-
     if (res) {
       return res.data;
     } else {
       throw new Error("imposible cargar el carrito");
     }
-  } catch (error) {
-    window.alert(error);
-
+  } catch (error: any) {
+    window.alert(error.message);
   }
 };
 
@@ -38,7 +36,9 @@ export const deleteCart = async (itemCarId: number, clientId: number) => {
   try {
     await baseUrl.delete(`/cart/product/${itemCarId}/client/${clientId}`);
     return "success";
-  } catch (error) {}
+  } catch (error: any) {
+    window.alert(error.message);
+  }
 };
 
 export const addCart = async (clientId: number, productId: number) => {
@@ -47,5 +47,21 @@ export const addCart = async (clientId: number, productId: number) => {
     if (res) {
       return { success: true };
     }
-  } catch (error) {}
+  } catch (error: any) {
+    window.alert(error.message);
+  }
+};
+
+export const removeCart = async (clientId: number) => {
+  try {
+    const res = await baseUrl.delete(`/cart/clear/${clientId}`);
+
+    if (res) {
+      return "success";
+    } else {
+      throw new Error("Error al eliminar el carrito");
+    }
+  } catch (error: any) {
+    window.alert(error.message);
+  }
 };
