@@ -1,22 +1,21 @@
 import React from "react";
 
+import Polygn from "../../Main/components/Polygn/Polygn";
+import Panel from "../../Main/components/Panel/Panel";
+import ImagesSvg from "../../Main/components/ImagesSvg/ImagesSvg";
 import Footer from "../../Main/components/Footer/Footer";
 import ImageComponents from "../../Main/components/Images/ImageComponent";
-import ImagesSvg from "../../Main/components/ImagesSvg/ImagesSvg";
-import Panel from "../../Main/components/Panel/Panel";
-import Polygn from "../../Main/components/Polygn/Polygn";
 import { images } from "../../Main/utils/images";
-import Navigation from "../../Main/components/Navigation/Navigation";
 import { Swiper } from "swiper/react";
+import Header from "../../Main/components/Header/Header";
 
-/* import NavigationPrincipal from "../components/NavigationPrincipal/NavigationPrincipal"; */
-
-function Principal() {
+/* import { Slide } from "react-toastify"; */
+function Main() {
   return (
     <React.Fragment>
       <div className="  relative grid  grid-cols-12  gap-y-[50px] place-items-center ">
         <Polygn />
-        <Navigation />
+        <Header />
         <Panel />
         <ImagesSvg />
 
@@ -30,6 +29,7 @@ function Principal() {
               source={e.source}
               title={e.title}
               to={e.to}
+              className="w-[275px] h-[275px] relative "
             />
           ))}
         </Swiper>
@@ -40,4 +40,4 @@ function Principal() {
   );
 }
 
-export default Principal;
+export default Main;
