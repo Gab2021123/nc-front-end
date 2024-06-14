@@ -1,12 +1,13 @@
 import React, { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import InputField from "../InputField/InputField";
 import LabelField from "../LabelField/LabelField";
-import { MdEmail, MdAlternateEmail } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import InputSubmit from "../../../../components/InputSubmit/InputSubmit";
 import { CiUser } from "react-icons/ci";
 import { postUserRegister } from "../../../../services/api/register.api";
 import { UserRegister } from "../../../../interfaces/IUserRegister";
 import { useNavigate } from "react-router-dom";
+import { RiLockPasswordFill } from "react-icons/ri";
 function CardRegister(): ReactElement<HTMLDivElement> {
   const [data, setData] = useState<UserRegister>();
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ function CardRegister(): ReactElement<HTMLDivElement> {
             <LabelField htmlFor="email">Correo</LabelField>
           </div>
           <div className="relative flex flex-row gap-x-[45px] items-center w-full">
-            <MdAlternateEmail className="absolute right-0" />
+            <RiLockPasswordFill className="absolute right-0" />
             <InputField
               onChange={handleChange}
               name="password"
