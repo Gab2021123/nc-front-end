@@ -7,7 +7,7 @@
   list-style: none;
 }
 .navigation li a {
-  color: #f16a4a;
+  color: #88290c;
   -webkit-text-stroke-color: aqua;
   text-decoration: none;
   transition-property: color;
@@ -16,7 +16,7 @@
   font-weight: bold;
 }
 .navigation li a:hover {
-  color: var(--colorAnchor);
+  color: #d73e1bc7;
 }
 
 @supports (display: flex) {

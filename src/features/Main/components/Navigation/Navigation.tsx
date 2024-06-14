@@ -8,6 +8,7 @@ import SelectOptions from "../SelectOptions/SelectOptions";
 import User from "../../../Principal/components/User/User";
 import { CgShoppingCart } from "react-icons/cg";
 import { Link } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa6";
 import "./Navigation.css";
 function Navigation(): ReactElement<HTMLElement> {
   const { isAuth, perfil } = useAuthStore();
@@ -52,6 +53,12 @@ function Navigation(): ReactElement<HTMLElement> {
           <Link to="/shoppingcart">
             <CgShoppingCart className="w-[23px] h-[23px] flex justify-center items-center hover:fill-slate-900 cursor-pointer" />
           </Link>
+          {isAuth && (
+            <Link to="/postproduct">
+              <FaCartPlus className="w-[23px] h-[23px] flex justify-center items-center hover:fill-slate-900 cursor-pointer" />
+            </Link>
+          )}
+
           {isAuth ? (
             <User nombre={perfil.nombre} email={perfil.username} />
           ) : (

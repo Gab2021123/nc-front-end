@@ -1,4 +1,4 @@
-h2 {
+.title {
   font-size: 35pt;
   color: transparent;
   font-family: sans-serif;
@@ -14,13 +14,13 @@ h2 {
   align-items: start;
   gap: 12px;
 }
-span {
+.span {
   color: transparent;
   -webkit-text-stroke: 4px;
   -webkit-text-stroke-color: rgba(215, 42, 42, 0.816);
   -webkit-text-stroke-width: 2.5px;
 }
-article span {
+.article span {
   font-size: 35pt;
   font-family: sans-serif;
   text-transform: uppercase;

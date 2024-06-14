@@ -1,6 +1,5 @@
 import React, { FormEvent } from "react";
 
-/* import ImageComponents from "../Main/components/Images/ImageComponent"; */
 import "./Contact.css";
 
 import Header from "../Main/components/Header/Header";
@@ -9,7 +8,6 @@ import InputField from "../Login/components/InputField/InputField";
 import LabelField from "../Login/components/LabelField/LabelField";
 import Footer from "../Main/components/Footer/Footer";
 import ImageComponents from "../Main/components/Images/ImageComponent";
-/* import { images } from "../Main/utils/images"; */
 
 function Contacto() {
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
@@ -27,7 +25,7 @@ function Contacto() {
           alt="contacto de la pagina"
         />
         <div className="grid grid-rows-2 sm:grid sm:grid-cols-2 absolute top-[39%]  w-full max-w-[1200px]">
-          <article className="flex flex-row gap-3">
+          <article className="flex flex-row gap-3 article">
             <form
               action=""
               className="flex flex-col p-4 gap-4 absolute "
@@ -63,11 +61,12 @@ function Contacto() {
               />
             </form>{" "}
           </article>
-          <article className=" grid grid-rows-3 gap-3 place-content-center place-items-center">
-            <span>Comparte </span>
-            <span>Disfruta</span>
-            <span>Convencete</span>
+          <article className=" grid grid-rows-3 gap-3 place-content-center place-items-center article">
+            <span className="span">Comparte </span>
+            <span className="span">Disfruta</span>
+            <span className="span">Convencete</span>
             <ImageComponents
+              absolute={false}
               label=""
               contrast={150}
               saturate={150}

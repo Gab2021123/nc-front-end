@@ -1,7 +1,7 @@
 import "boxicons";
 import "./Box-icon.css";
 import { BaseSyntheticEvent, MouseEventHandler, useState } from "react";
-import { close, menu } from "./function";
+/* import { close, menu } from "./function"; */
 
 export default function BoxIcon() {
   const [viewMain, setViewMain] = useState(true);
@@ -26,9 +26,9 @@ export default function BoxIcon() {
 
     if (navigation) {
       if (viewMain) {
-        menu(navigation, e.target);
+        navigation.style.display = "flex";
       } else {
-        close(navigation, e.target);
+        navigation.style.display = "none";
       }
 
       console.log((e.target as HTMLElement).innerText);

@@ -97,7 +97,7 @@ const ProductFindComponent: React.FC<ProductFindProps> = ({ value }) => {
                       >
                         <span className="flex items-center gap-3">
                           <IoPricetagOutline className={styleIcon} />
-                          <span className="">{product.precio}</span>
+                          <span className="">${product.precio.toFixed(2)}</span>
                         </span>
                       </div>
                     </div>
