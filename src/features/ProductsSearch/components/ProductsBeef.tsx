@@ -78,7 +78,7 @@ const ProductsMainList = () => {
                   id="cardview"
                 >
                   <img
-                    src={`${import.meta.env.VITE_API_ENDPOINT_URL}/${
+                    src={`${import.meta.env.VITE_API_ENDPOINT_URL}${
                       product.imagen
                     }`}
                     className="w-full h-full justify-between rounded-lg object-cover md:max-w-[11.25rem] md:max-h-[11.25rem] max-h-[112px] aspect-auto"

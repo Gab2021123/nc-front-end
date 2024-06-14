@@ -37,16 +37,16 @@ function Contacto() {
                 Enviar sus <span> datos</span>
               </h2>
               <div className="relative">
-                <InputField placeholder="email" />
-                <LabelField>Email</LabelField>
+                <InputField placeholder="email" id="email" />
+                <LabelField htmlFor="email">Email</LabelField>
               </div>
               <div className="relative">
-                <InputField placeholder="nombre y apellidos" />
-                <LabelField>Nombres y Apellidos</LabelField>
+                <InputField placeholder="nombre y apellidos" id="name" />
+                <LabelField htmlFor="name">Nombres y Apellidos</LabelField>
               </div>
               <div className="relative">
-                <InputField placeholder="email" />
-                <LabelField>Email</LabelField>
+                <InputField placeholder="teléfono" id="teléfono" />
+                <LabelField htmlFor="teléfono">Teléfono</LabelField>
               </div>
 
               <textarea
