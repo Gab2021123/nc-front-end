@@ -8,7 +8,6 @@ import {
 } from "../../../../services/api/cart.api";
 import { getProduct } from "../../../../services/api/products.api";
 import { useAuthStore } from "../../../../store/appStore";
-import Wave from "../Wave/Wave";
 
 import Navigation from "../../../Main/components/Navigation/Navigation";
 

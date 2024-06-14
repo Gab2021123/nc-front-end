@@ -25,13 +25,13 @@ type ProductFindProps = {
 };
 
 const ProductFindComponent: React.FC<ProductFindProps> = ({ value }) => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [_products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const getFoods = async () => {
     const foods = await getProducts();
     setProducts(foods); // Actualiza el estado de los productos
 
-    // Mueve la lógica de filtrado aquí dentro para que se ejecute después de obtener los productos
+    // Mueve la lógica de filtrado aquí dentro para ques se ejecute después de obtener los productos
     const filterProducts = foods.filter((product: any) =>
       product.nombre.toLowerCase().includes(value.toLowerCase())
     );
