@@ -1,0 +1,60 @@
+:root {
+  --hoverBtnClose: #d3d5b384;
+}
+.show {
+  transform: scale(0);
+  border: none;
+  cursor: pointer;
+}
+.show:hover {
+  background: var(--hoverBtnClose);
+}
+
+@media (width< 850px) {
+  .show {
+    transform: scale(1) translateX(0);
+    background: rgb(222, 242, 242, 0.89);
+    border: 2px solid whitesmoke;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    top: 0.4rem;
+    right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    height: 45px;
+    width: 45px;
+    z-index: 3;
+    fill: #d3d5b384;
+  }
+  .appendNavi {
+    animation: scaleNavigation 400ms ease-in-out;
+  }
+  @keyframes scaleNavigation {
+    from {
+      transform: translateX(-200%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  .removerNavi {
+    animation: scaleNavigationMinus 500ms ease-in-out;
+  }
+  @keyframes scaleNavigationMinus {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-400%);
+    }
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 40, "opsz" 24;
+    transform: translateX(25px);
+  }
+}

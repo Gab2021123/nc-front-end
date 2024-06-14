@@ -8,29 +8,17 @@ import SelectOptions from "../SelectOptions/SelectOptions";
 import User from "../../../Principal/components/User/User";
 import { CgShoppingCart } from "react-icons/cg";
 import { Link } from "react-router-dom";
+import "./Navigation.css";
 function Navigation(): ReactElement<HTMLElement> {
   const { isAuth, perfil } = useAuthStore();
-
   return (
     <React.Fragment>
-      <nav className="bg-transparent flex flex-col col-span-5 sm:px-[32px] justify-between  sm:gap-[82px] sm:col-span-full sm:grid  sm:w-full sm:grid-flow-col ">
-        <div className="z-10">
-          <LisItemNavigation
-            to="/"
-            icon={""}
-            avaible={true}
-            left={false}
-            rigth={false}
-            className="font-semibold list-none "
-          >
-            <img src="/logo.png" alt="flashfood" width={285} height={285} />
-          </LisItemNavigation>
-        </div>
-        <div className="z-10  items-center hidden  flex-col sm:flex sm:flex-row   gap-[82px] list-none ">
+      <nav className="z-10 " id="navigation_element">
+        <ul className="navigation navigator" id="navigation">
           <LisItemNavigation
             to="/about"
             icon={
-              <PiMotorcycle className="w-[23px] h-[23px] flex justify-center items-center cursor-pointer " />
+              <PiMotorcycle className="w-[23px] h-[23px] sm:flex sm:justify-center hidden sm:items-center cursor-pointer " />
             }
             avaible={true}
             className="font-semibold text-[18pt]"
@@ -69,7 +57,7 @@ function Navigation(): ReactElement<HTMLElement> {
           ) : (
             <SelectOptions />
           )}
-        </div>
+        </ul>
       </nav>
     </React.Fragment>
   );

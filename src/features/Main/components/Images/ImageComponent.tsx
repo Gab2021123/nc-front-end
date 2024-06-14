@@ -1,24 +1,27 @@
 /* import { Link } from "react-router-dom"; */
-import { SwiperSlide } from "swiper/react";
-export interface ImageComponent {
+
+import { HTMLAttributes } from "react";
+
+export interface ImageComponent extends HTMLAttributes<HTMLElement> {
   label: string;
   source: string;
   title: string;
   to: string;
   contrast: number;
   saturate: number;
+  numberSpan?: number;
 }
 function ImageComponents(props: ImageComponent) {
   return (
     <>
-      <SwiperSlide className=" w-[275px] h-[275px] relative">
+      <div {...props}>
         {/*  <Link
           {...props}
           to={props.to}
           className="w-[275px] h-[275px] relative "
         > */}
         <label
-          className="absolute top-0 z-10 left-[15px] p-[2px] font-bold text-white text-[24pt]  "
+          className="absolute top-0 z-10 left-[15px] p-[2px] font-bold text-white text-[24pt] w-full h-full  "
           htmlFor="image"
         >
           {props.label}
@@ -31,7 +34,7 @@ function ImageComponents(props: ImageComponent) {
           alt={props.title}
         />
         {/*  </Link> */}
-      </SwiperSlide>
+      </div>
     </>
   );
 }

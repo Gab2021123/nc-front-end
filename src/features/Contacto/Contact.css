@@ -1,0 +1,37 @@
+h2 {
+  font-size: 35pt;
+  color: transparent;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+  -webkit-text-stroke: 4px;
+  -webkit-text-stroke-color: rgb(234, 133, 26);
+  -webkit-text-stroke-width: 2.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  gap: 12px;
+}
+span {
+  color: transparent;
+  -webkit-text-stroke: 4px;
+  -webkit-text-stroke-color: rgba(215, 42, 42, 0.816);
+  -webkit-text-stroke-width: 2.5px;
+}
+article span {
+  font-size: 35pt;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+  -webkit-text-stroke: 4px;
+  -webkit-text-stroke-color: rgb(234, 133, 26);
+  -webkit-text-stroke-width: 2.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  gap: 12px;
+}

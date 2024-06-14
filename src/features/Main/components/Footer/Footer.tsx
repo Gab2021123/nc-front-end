@@ -1,8 +1,12 @@
+import { HTMLAttributes } from "react";
 import { Link } from "react-router-dom";
-
-const Footer = () => {
+interface Props extends HTMLAttributes<HTMLElement> {}
+const Footer = (props: Props) => {
   return (
-    <footer className="bg-orange-500 grid grid-flow-row place-content-center place-items-center  col-span-full sm:grid sm:grid-flow-col sm:max-w-full sm:w-full font-semibold ">
+    <footer
+      {...props}
+      className={`${props.className} bg-orange-500 grid grid-flow-row place-content-center place-items-center  col-span-full sm:grid sm:grid-flow-col sm:max-w-full sm:w-full font-semibold `}
+    >
       <nav className="grid sm:col-span-full  place-items-start place-content-start gap-y-5 content-center grid-flow-row sm:grid sm:grid-flow-col sm:w-full p-8 ">
         <Link className=" text-white " to="">
           ¿Quienes somos?

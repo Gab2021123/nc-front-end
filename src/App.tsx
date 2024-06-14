@@ -9,6 +9,7 @@ import ShoppingCart from "./features/ShoppingCart/Pages/ShoppingCart";
 import ProductDetail from "./features/ProductsList/components/ProductDetail/ProductDetail.tsx";
 import PostProduct from "./features/PostProduct/pages/PostProduct.tsx";
 import { useAuthStore } from "./store/appStore.ts";
+import Contacto from "./features/Contacto/Contacto.tsx";
 
 function App() {
   const { isAuth } = useAuthStore();
@@ -25,6 +26,7 @@ function App() {
             <Route path="/principal" element={<Principal />}></Route>
             <Route path="/productlist" element={<ProductMainList />}></Route>
             <Route path="/shoppingcart" element={<ShoppingCart />}></Route>
+            <Route path="/contact" element={<Contacto />}></Route>
             <Route
               path="productdetail/:productId"
               element={<ProductDetail />}
