@@ -66,7 +66,6 @@ function Contacto() {
             <span className="span">Disfruta</span>
             <span className="span">Convencete</span>
             <ImageComponents
-              absolute={false}
               label=""
               contrast={150}
               saturate={150}
